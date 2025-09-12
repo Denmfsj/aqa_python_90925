@@ -1,4 +1,4 @@
-print("My name is Denys")
+print("My name is Alex")
 
 # незмінні типи
 my_name = 'Denys'  # str, string, строка
@@ -12,6 +12,7 @@ my_tuple = ('some info', 42)  # tuple, кортеж
 my_friends = ['Alex', 'Olena']  # list, список
 my_info = {'name': 'Denys', 'age': 34}  # dict, словник
 my_numbers = {1, 2, 3, 4}  # set, множина
+
 
 print("My age is 35",  my_age == 35)  # False
 print("My age is 34", my_age == 34)  # True
