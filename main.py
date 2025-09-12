@@ -10,7 +10,7 @@ my_tuple = ('some info', 42)  # tuple, кортеж
 
 # змінні типи
 my_friends = ['Alex', 'Olena']  # list, список
-my_info = {'name': 'Denys', 'age': 34}  # dict, словник
+my_info = {'name': 'Denys', 'age': 35}  # dict, словник
 my_numbers = {1, 2, 3, 4}  # set, множина
 
 
