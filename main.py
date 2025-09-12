@@ -1,4 +1,4 @@
-print("My name is Alex")
+print("My name is Yur")
 
 # незмінні типи
 my_name = 'Denys'  # str, string, строка
