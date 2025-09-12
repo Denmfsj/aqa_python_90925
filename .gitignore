@@ -2,6 +2,9 @@
 __pycache__/
 *.py[codz]
 *$py.class
+.idea/
+credentials.json
+tst.py
 
 # C extensions
 *.so
