@@ -1,0 +1,15 @@
+a,b = b,a
+
+set
+hash
+dict
+
+info = {
+    'id': 1,
+    'name' = 'Den',
+
+    'info': {
+        'position': 'AQA',
+        'skills': ['Python', 'Git']
+    }
+}
