@@ -1,0 +1,91 @@
+# count quantity of items of all clients
+orders = [
+    {
+        "client": {
+            "id": 1,
+            "name": "Ivan",
+            "orders": [
+                {"id": 101, "items": [{"product": "apple", "qty": 2}, {"product": "banana", "qty": 3}]},
+                {"id": 102, "items": [{"product": "apple", "qty": 1}]}
+            ]
+        }
+    },
+    {
+        "client": {
+            "id": 2,
+            "name": "Olga",
+            "orders": [
+                {"id": 103, "items": [{"product": "banana", "qty": 2}, {"product": "orange", "qty": 5}]}
+            ]
+        }
+    }
+]
+
+#  average grade
+students = {
+    "student": {
+        "name": "Petro",
+        "profile": {
+            "id": 42,
+            "courses": [
+                {"title": "Math", "grades": [90, 85, 100]},
+                {"title": "History", "grades": [70, 75]},
+                {"title": "Biology", "grades": [88, 92]}
+            ]
+        }
+    }
+}
+
+# users with gmail
+company = {
+    "organization": {
+        "name": "Tech Corp",
+        "departments": [
+            {
+                "name": "IT",
+                "employees": [
+                    {"name": "Anna", "contacts": {"email": "anna@gmail.com"}},
+                    {"name": "Bohdan", "contacts": {"email": "bohdan@corp.com"}}
+                ]
+            },
+            {
+                "name": "HR",
+                "employees": [
+                    {"name": "Ira", "contacts": {"email": "ira@gmail.com"}},
+                    {"name": "Oleksii", "contacts": {"email": "oleksii@corp.com"}}
+                ]
+            }
+        ]
+    }
+}
+
+
+#################################################################
+# add property is progress or done
+statuses = {
+    "projects": [
+        {
+            "name": "Alpha",
+            # додати property is_completed: bool, True якщо всі tasks.done == True в іншому випадку is_completed = Fasle
+            "team": {
+                "members": [
+                    {"name": "Ivan", "tasks": [
+                        {"title": "Dev", "done": False},
+                        {"title": "Setup", "done": True}]
+                     }
+                ]
+            }
+        },
+        {
+            "name": "Beta",
+            "team": {
+                "members": [
+                    {"name": "Oksana", "tasks": [
+                        {"title": "Research", "done": True},
+                        {"title": "Deploy", "done": True}]
+                     }
+                ]
+            }
+        }
+    ]
+}

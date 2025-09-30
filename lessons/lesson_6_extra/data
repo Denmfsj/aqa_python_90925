@@ -1,0 +1,21 @@
+bool([])
+bool(dict())
+bool(tuple())
+bool(set())
+bool(False)
+bool(None)
+bool(0)
+bool(0.0)
+bool('')
+
+
+users = [
+    {'id': 1, 'name': 'Den', 'age': 20, 'job': [{'id': 1, 'title': 'QA'}]},
+    {'id': 2, 'name': 'Alex', 'age': 30},
+    {'id': 3, 'name': 'Igor', 'age': 40, 'job': None},
+    {'id': 4, 'name': 'Ivan', 'age': 50, 'job': [{'id': 2, 'title': 'CEO'}]},
+    {'id': 5, 'name': 'Mor', 'age': 60, 'job': [{'id': 1, 'title': 'QA'}]},
+    {'id': 6, 'name': 'Viktor', 'age': 70, 'job': [{'id': 3, 'title': 'Retired'}]},
+    {'id': 7, 'name': 'Maria', 'age': 20, 'job': [{'id': 1, 'title': 'QA'}]},
+    {'id': 8, 'name': 'Anna', 'age': 20, 'job': []},
+]
