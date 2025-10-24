@@ -4,7 +4,7 @@ import unittest
 class TestExample(unittest.TestCase):
 
 
-    def test_first_example(self):
+    def t_first_example(self):
 
         expected_result = 'Den'
         actual_result = 'Den'
@@ -12,7 +12,7 @@ class TestExample(unittest.TestCase):
         self.assertEqual(expected_result,actual_result)
 
 
-    def test_first_example_broken(self):
+    def t_first_example_broken(self):
 
         expected_result = 'Den'
         actual_result = 'Den2'

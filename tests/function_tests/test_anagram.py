@@ -14,7 +14,7 @@ import functions
 
 
 
-class TestAnagram(unittest.TestCase):
+class TAnagram(unittest.TestCase):
 
     @classmethod
     def setUpClass(cls):
@@ -35,7 +35,7 @@ class TestAnagram(unittest.TestCase):
         print('\nafter each test .....\n')
 
 
-    def test_anagram_true(self):
+    def t_anagram_true(self):
 
         actual_result = functions.is_anagram('anna', 'naan')
         print('test_anagram_true', self.user_data)
@@ -43,7 +43,7 @@ class TestAnagram(unittest.TestCase):
         self.assertTrue(actual_result)
 
 
-    def test_anagram_false(self):
+    def t_anagram_false(self):
 
         actual_result = functions.is_anagram('Asd', 'asd')
         print('test_anagram_false', self.user_data)

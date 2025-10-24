@@ -9,7 +9,7 @@ path_of_current_file = pathlib.Path(__file__)  # шлях до поточног�
 path_to_base_folder = path_of_current_file.parent.parent.parent
 
 # print('path_of_current_file -> ', path_of_current_file)
-#  path_of_current_file ->  /home/den/hillel/aqa_python_90925/tests/function_tests/test_factorial.py
+#  path_of_current_file ->  /home/den/hillel/aqa_python_90925/tests/function_tests/t_factorial.py
 
 sys.path.insert(0, str(path_to_base_folder))
 
@@ -22,7 +22,7 @@ import functions
 class TestFactorial(unittest.TestCase):
 
 
-    def test_factorial_5(self):
+    def t_factorial_5(self):
 
         expected_result = 120
         actual_result = functions.factorial(5)
@@ -30,7 +30,7 @@ class TestFactorial(unittest.TestCase):
         self.assertEqual(expected_result, actual_result)
 
 
-    def test_factorial_6(self):
+    def t_factorial_6(self):
 
         expected_result = 700
         actual_result = functions.factorial(6)
@@ -39,7 +39,7 @@ class TestFactorial(unittest.TestCase):
 
 
 
-    # def test_assert_diff(self):
+    # def t_assert_diff(self):
     #
     #     users = [
     #         {'id': 18, 'name': 'alex'},

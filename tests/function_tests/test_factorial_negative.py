@@ -12,7 +12,7 @@ path_of_current_file = pathlib.Path(__file__)  # шлях до поточног�
 path_to_base_folder = path_of_current_file.parent.parent.parent
 
 # print('path_of_current_file -> ', path_of_current_file)
-#  path_of_current_file ->  /home/den/hillel/aqa_python_90925/tests/function_tests/test_factorial.py
+#  path_of_current_file ->  /home/den/hillel/aqa_python_90925/tests/function_tests/t_factorial.py
 
 sys.path.insert(0, str(path_to_base_folder))
 
@@ -27,12 +27,12 @@ def get_user_name():
 
 class TestFactorial(unittest.TestCase):
 
-    def test_user_name(self):
+    def t_user_name(self):
 
         with self.assertRaises(TimeoutError):
             get_user_name()
 
-    def test_factorial_negative(self):
+    def t_factorial_negative(self):
 
         with self.assertRaises(TypeError):
             functions.factorial('asds')

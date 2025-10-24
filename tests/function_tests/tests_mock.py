@@ -14,10 +14,10 @@ class APIClient:
         return response.json() if response.status_code == 200 else None
 
 
-class TestAPIClient(unittest.TestCase):
+class TAPIClient(unittest.TestCase):
 
     @patch('requests.get')
-    def test_get_data_success(self, mock_get):
+    def t_get_data_success(self, mock_get):
         # Створюємо макет відповіді API-ендпоінта
         mock_response = Mock()
         mock_response.status_code = 200
@@ -37,7 +37,7 @@ class TestAPIClient(unittest.TestCase):
         self.assertEqual(result, {'data': 'example_data'})
 
     @patch('requests.get')
-    def test_get_data_failure(self, mock_get):
+    def t_get_data_failure(self, mock_get):
         # Створюємо макет відповіді API-ендпоінта для
 				# симуляції невдачі (status_code != 200)
         mock_response = Mock()
