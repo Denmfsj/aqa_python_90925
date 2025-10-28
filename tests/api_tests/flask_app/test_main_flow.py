@@ -1,6 +1,8 @@
 import requests
 import pytest
 
+from definitions import READ_WRITE_TEMP_FILE
+
 
 
 base_url = 'http://127.0.0.1:7070'
@@ -13,8 +15,13 @@ updated_content = {'bikes': ['Honda', 'Suzuki']}
 class TestContent:
 
 
-    @pytest.fixture  # спец слово дляч використання в тестах
+    @pytest.fixture  # спец слово для використання в тестах
     def create_content(self):
+
+        # Записувати іякісь дані в файл
+        with open(READ_WRITE_TEMP_FILE, 'w') as f:
+            f.write(';some etxt')
+
         response_data = requests.post(f'{base_url}/content', json=content)
         id_of_created_content = response_data.json()['id']
         print(f'precondition content was created, {id_of_created_content}')
@@ -35,6 +42,10 @@ class TestContent:
 
 
     def test_get_content(self, create_content):
+
+        # чситати файл
+        with open(READ_WRITE_TEMP_FILE) as f:
+            data_file = f.read()
 
         response_get = requests.get(f'{base_url}/content')
         assert response_get.status_code == 200, "Unable to get content"

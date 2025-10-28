@@ -18,10 +18,6 @@ def is_anagram(word1, word2):
     """
     description
     """
-    if sorted(word1) != sorted(word2):
-        logging.warn(f'{word1} is not annagram to {word2}')
-        logging.debug(f'\nSorted of word1 = {sorted(word1)} \nsorted word2 = {word2}')
-
     return sorted(word1) == sorted(word2)
 
 
