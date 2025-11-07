@@ -1,5 +1,6 @@
 import functions
 import pytest
+from definitions import READ_WRITE_TEMP_FILE
 
 
 @pytest.mark.smoke
@@ -8,6 +9,9 @@ def test_triangle_area_smoke():
 
     expected_result = 80.49223565040295
     actual_result = functions.triangle_area(12,20,30)
+
+    with open(READ_WRITE_TEMP_FILE) as f:
+        f.read()
 
     assert expected_result == actual_result
 

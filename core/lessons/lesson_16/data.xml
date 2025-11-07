@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<groups>
+  <group>
+    <number>0</number>
+    <name>Equity</name>
+    <isEquity/>
+    <populatesUnderlyings/>
+    <hasLmeData/>
+    <calculatesIndexVolumes/>
+    <timingExbytes>
+      <micro>0xFFFF</micro>
+      <bbo>0xBTLS</bbo>
+      <incoming>0xQUIN</incoming>
+    </timingExbytes>
+  </group>
+  <group>
+    <number>1</number>
+    <name>Equity</name>
+    <isEquity/>
+    <populatesUnderlyings/>
+    <hasLmeData/>
+    <calculatesIndexVolumes/>
+    <timingExbytes>
+      <micro>0xFFAF</micro>
+      <bbo>0xBTLS</bbo>
+      <incoming>0xQUIN</incoming>
+    </timingExbytes>
+  </group>
+</groups>
