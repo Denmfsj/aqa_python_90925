@@ -26,4 +26,17 @@
       <incoming>0xQUIN</incoming>
     </timingExbytes>
   </group>
+  <second_group>
+    <number>2</number>
+    <name>Equity</name>
+    <isEquity/>
+    <populatesUnderlyings/>
+    <hasLmeData/>
+    <calculatesIndexVolumes/>
+    <timingExbytes>
+      <micro>0xFFAF</micro>
+      <bbo>0xBTLS</bbo>
+      <incoming>0xQUIN</incoming>
+    </timingExbytes>
+  </second_group>
 </groups>

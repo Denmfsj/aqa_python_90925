@@ -2,6 +2,9 @@
 my_number = 10
 my_name = 'Den'
 
+def custom_separator_short():
+    print('111')
+
 print(my_number + 5)
 print(my_name + '  Mer')
 

@@ -31,9 +31,10 @@ def custom_separator_short(quan_of_dashes=10):
     print('|'*quan_of_dashes)
 
 
-greetings('Den')
-custom_separator()
-user_name = 'Alex'
-greetings(user_name)
-custom_separator()
-custom_separator_short()
+if __name__ == '__main__':
+    greetings('Den')
+    custom_separator()
+    user_name = 'Alex'
+    greetings(user_name)
+    custom_separator()
+    custom_separator_short()
