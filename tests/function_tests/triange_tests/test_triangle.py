@@ -2,6 +2,16 @@ import functions
 import pytest
 from definitions import READ_WRITE_TEMP_FILE
 
+# pre-condition = create user
+# test = change user
+# post-condition = delete user
+
+# pre-condition = create user
+# test = get user
+# test = change user
+# post-condition = delete user
+
+
 
 @pytest.mark.smoke
 @pytest.mark.triangle_feature
