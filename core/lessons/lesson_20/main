@@ -1,0 +1,7 @@
+# pip install tzlocal
+# from datetime import datetime
+# from tzlocal import get_localzone
+#
+# client_time_dt = datetime.fromisoformat(some_time)
+# local_tz = str(get_localzone())
+# client_time_dt = pytz.timezone(local_tz).localize(some_time)
