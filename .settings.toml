@@ -4,14 +4,14 @@ CURENT_VERSION=22.1
 
 [dev]
 GOREST_API="http://gorest.co.in/public/v2/users"
-STUDENT_URL='http://127.0.0.1:8080'
+student_url='http://127.0.0.1:8081'
 
 [stage]
 GOREST_API="http://gorest.co.in/public/v2/users"
-STUDENT_URL='http://127.0.0.1:8080'
+student_url='http://127.0.0.1:8081'
 
 
 [prod]
 GOREST_API="http://gorest.co.in/public/v2/users"
-STUDENT_URL='' # not implemented on prod
+student_url="not implemented yet"
 
