@@ -1,23 +1,51 @@
 import requests
 
+from core.api.students_service.student_dto import StudentSchema
+from utils.settings import d_settings
+
 
 class StudentsController:
 
     def __init__(self):
-        self.auth_token = None
-        self.base_url = 'http://127.0.0.1:8080'
+        self.__auth_token = None
+        self.base_url = d_settings.STUDENT_URL  # 'http://127.0.0.1:8080'
 
 
-    def get_students(self):
-        return requests.get(url=f'{self.base_url}/students/').json()
+    def __get_token(self):
+        if self.__auth_token is None:
+            self.__auth_token = self.get_auth()
+        return self.__auth_token
 
-    def get_student(self, st_id: int):
-        return requests.get(url=f'{self.base_url}/students/{st_id}').json()
+    def create_student(self, input_params: dict, check_schema=True):
+
+        data = requests.post(url=f'{self.base_url}/students/',
+                             json=input_params,
+                             headers={'token': self.__get_token()})
+
+        if check_schema:
+            StudentSchema().load(data.json())
+
+        return data
 
     def get_auth(self):
         return requests.post(url=f'{self.base_url}/auth',
-                             json={'name': 'test', 'password': 'test'}).text
+                             json={
+                                 'name': d_settings.STUDENT_SERVICE_NAME,
+                                   'password': d_settings.STUDENT_SERVICE_PWD
+                                   }).text
 
-    def create_student(self, input_params: dict):
+    def get_students(self, check_schema=True):
+        data =  requests.get(url=f'{self.base_url}/students/').json()
 
-        return requests.post(url=f'{self.base_url}/students/', json=input_params).json()
+        if check_schema:
+            StudentSchema(many=True).load(data)  # перевіка відповіді на співставність до схеми
+
+        return data
+
+    def get_student(self, st_id: int, check_schema=True):
+        data =  requests.get(url=f'{self.base_url}/students/{st_id}').json()
+
+        if check_schema:
+            StudentSchema().load(data)
+
+        return data

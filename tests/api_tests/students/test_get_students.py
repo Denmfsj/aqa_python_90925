@@ -1,4 +1,6 @@
 from core.api.students_service.students_controller import StudentsController
+from assertpy import assert_that, soft_assertions
+from core.api.students_service.stud_asserts import StAssert
 
 
 class TestGetStudents:
@@ -10,13 +12,21 @@ class TestGetStudents:
 
         all_st = self.students_ctrl.get_students()
 
-        assert len(all_st) == 10, 'By default server must return 10 records'
+        with soft_assertions():
+            assert_that(len(all_st), 'Number of items in response must be 10').is_equal_to(10)
+
+            # for case of checking each of 10 students
+            for st in all_st:
+                StAssert.base_check_student(st)
 
 
     def test_get_student_smoke(self):
 
-        st = self.students_ctrl.get_student(1)
+        st = self.students_ctrl.get_student(1, check_schema=False)
 
-        assert st.get('id') == 1, 'student id must be 1'
+        assert_that(st.get('id'), 'student id must be 1').is_equal_to(1)
+        StAssert.base_check_student(st)
 
-
+# pip install pytest-xdist
+# pytest -n 4
+# https://refactoring.guru/uk
