@@ -4,11 +4,11 @@ CURENT_VERSION=22.1
 
 [dev]
 GOREST_API="http://gorest.co.in/public/v2/users"
-student_url='http://127.0.0.1:8081'
+student_url='http://127.0.0.1:8080'
 
 [stage]
 GOREST_API="http://gorest.co.in/public/v2/users"
-student_url='http://127.0.0.1:8081'
+student_url='http://127.0.0.1:8080'
 
 
 [prod]

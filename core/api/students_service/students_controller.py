@@ -1,5 +1,6 @@
 import requests
 
+from core.api.students_service import StudentRoutes
 from core.api.students_service.student_dto import StudentSchema
 from utils.settings import d_settings
 
@@ -13,39 +14,71 @@ class StudentsController:
 
     def __get_token(self):
         if self.__auth_token is None:
+            print('\n\n!---------------------Getting token----------------------!\n\n')
             self.__auth_token = self.get_auth()
         return self.__auth_token
-
-    def create_student(self, input_params: dict, check_schema=True):
-
-        data = requests.post(url=f'{self.base_url}/students/',
-                             json=input_params,
-                             headers={'token': self.__get_token()})
-
-        if check_schema:
-            StudentSchema().load(data.json())
-
-        return data
 
     def get_auth(self):
         return requests.post(url=f'{self.base_url}/auth',
                              json={
                                  'name': d_settings.STUDENT_SERVICE_NAME,
-                                   'password': d_settings.STUDENT_SERVICE_PWD
-                                   }).text
+                                 'password': d_settings.STUDENT_SERVICE_PWD
+                             }).text
 
-    def get_students(self, check_schema=True):
-        data =  requests.get(url=f'{self.base_url}/students/').json()
+    def get_students(self, check_schema=True, status_code=200):
+        response =  requests.get(url=f'{self.base_url}/students/')
 
-        if check_schema:
-            StudentSchema(many=True).load(data)  # перевіка відповіді на співставність до схеми
-
-        return data
-
-    def get_student(self, st_id: int, check_schema=True):
-        data =  requests.get(url=f'{self.base_url}/students/{st_id}').json()
+        if status_code:
+            assert response.status_code == status_code, f'Status code must be {status_code}'
 
         if check_schema:
-            StudentSchema().load(data)
+            StudentSchema(many=True).load(response.json())  # перевіка відповіді на співставність до схеми
 
-        return data
+
+        return response.json()
+
+    def get_student(self, st_id: int, check_schema=True, status_code=200):
+        response =  requests.get(url=f'{self.base_url}/students/{st_id}')
+
+        if status_code:
+            assert response.status_code == status_code, f'Status code must be {status_code}'
+
+        if check_schema:
+            StudentSchema().load(response)
+
+
+        return response.json()
+
+    def create_student(self, input_params: dict, check_schema=True, status_code=201):
+        response = requests.post(url=f'{self.base_url}/students/',
+                             json=input_params,
+                             headers={'token': self.__get_token()})
+
+        if status_code:
+            assert response.status_code == status_code, f'Status code must be {status_code}'
+
+        if check_schema:
+            StudentSchema().load(response.json())
+
+        return response.json()
+
+    def update_student(self, st_id: int, input_params: dict, check_schema=True, status_code=200):
+        response = requests.put(
+            url=f'{self.base_url}/students/{st_id}',
+                             json=input_params,
+                             headers={'token': self.__get_token()})
+
+        if status_code:
+            assert response.status_code == status_code, f'Status code must be {status_code}'
+
+        if check_schema:
+            StudentSchema().load(response.json())
+
+        return response.json()
+
+    def delete_student(self, st_id: int, status_code=204):
+        response = requests.delete(url=f'{self.base_url}/students/{st_id}',
+                             headers={'token': self.__get_token()})
+
+        if status_code:
+            assert response.status_code == status_code, f'Status code must be {status_code}'

@@ -12,6 +12,7 @@ SCREENSHOTS_FOLDER = BASE_PATH / 'temp' / 'screenshots'
 FILE_TO_READ_WRITE_LESSON_16 = BASE_PATH / 'core' /'lessons' / 'lesson_16' / 'some_text.txt'
 
 SQLITE_DB = BASE_PATH / 'sqlite_db.db'
+SQLITE_STUDENT_APP_DB = BASE_PATH / 'local_server' / 'ololo1.db'
 
 
 

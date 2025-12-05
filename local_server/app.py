@@ -133,5 +133,5 @@ def check_auth(headers):
 if __name__ == '__main__':
     db = SQLiteActions('ololo1.db')
     host = '127.0.0.1'
-    port = 8081
+    port = 8080
     app.run(host=host, port=port, debug=True)
