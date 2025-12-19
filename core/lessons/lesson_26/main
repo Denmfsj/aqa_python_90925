@@ -1,0 +1,56 @@
+
+# docs
+https://playwright.dev/python/docs/intro
+
+# install
+pip install playwright
+playwright install
+playwright install msedge
+
+
+# run
+from playwright.sync_api import sync_playwright
+
+with sync_playwright() as p:
+    browser = p.chromium.launch(headless=False,channel="msedge")
+    page = browser.new_page()
+    page.goto("https://the-internet.herokuapp.com")
+
+
+# waits
+locator.wait_for
+wait_for_timeout()
+page.set_default_timeout
+context.set_default_timeout
+set_default_navigation_timeout
+
+
+# items
+locator
+get_by_role(button, link)
+get_by_text
+fill
+press("input", "Enter")
+.keyboard.type
+nth
+
+# scroll
+page.mouse.wheel(0, 1000)
+page.evaluate("window.scrollTo(0, document.body.scrollHeight)")
+
+# checks
+expect
+
+# dropdown
+select_option
+# select_option(label, value, index)
+page.eval_on_selector(
+        "#dropdown",
+        "el => el.options[el.selectedIndex].text"
+    )
+
+
+
+# --------------
+Dynamic Content - text
+Add/Remove Elements
