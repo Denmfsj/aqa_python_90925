@@ -5,13 +5,17 @@ CURENT_VERSION=22.1
 [dev]
 GOREST_API="http://gorest.co.in/public/v2/users"
 student_url='http://127.0.0.1:8080'
+SAUSEDEMO_URL = "https://www.saucedemo.com/"
+
 
 [stage]
 GOREST_API="http://gorest.co.in/public/v2/users"
 student_url='http://127.0.0.1:8080'
+SAUSEDEMO_URL = "https://www.saucedemo.com/"
 
 
 [prod]
 GOREST_API="http://gorest.co.in/public/v2/users"
 student_url="not implemented yet"
+SAUSEDEMO_URL = "https://www.saucedemo.com/"
 
