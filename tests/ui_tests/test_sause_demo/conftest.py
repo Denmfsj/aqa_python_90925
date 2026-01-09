@@ -1,14 +1,17 @@
+from pathlib import Path
+
 import pytest
 
-from playwright.sync_api import sync_playwright, expect
+from playwright.sync_api import sync_playwright, expect, Page
 
 from core.ui.sausedemo.pages.home_page.home_page import HomePage
 from core.ui.sausedemo.pages.login_page.login_page import LoginPage
 from core.ui.sausedemo.pages.product_page.product_page import ProductPage
+from definitions import BASE_PATH
 
 
 @pytest.fixture(scope='session')  # 1 сторінка для всіх тестів
-def pw_page():
+def pw_page() -> Page:
 
     # pre-condition - перед yield  в yield page поверне сторінку
     # після yield post-condition
@@ -20,15 +23,35 @@ def pw_page():
     print('test are done and browser was closed')
 
 
+@pytest.fixture(scope="function", autouse=True)
+def trace_per_test(request, pw_page):
+
+    context = pw_page.context
+
+    trace_path = BASE_PATH / 'pw_traces'
+    trace_path.mkdir(exist_ok=True)
+
+    # старт трасування
+    context.tracing.start(
+        screenshots=True,
+        snapshots=True,
+        sources=True
+    )
+
+    yield  # тест виконується тут
+
+    # stop tracing і збереження після тесту
+    test_name = request.node.name
+    context.tracing.stop(path=str(trace_path / f"{test_name}.zip"))
 
 @pytest.fixture(scope='session')
-def home_page(pw_page):
+def home_page(pw_page) -> HomePage:
     """Логіниться в систему, логіниться в систему перший раз. Повертає HomePage"""
     home_page = HomePage(pw_page)
     home_page.open_page()
 
     if not home_page.is_page_opened():
-        LoginPage(page=pw_page).do_login()
+        return LoginPage(page=pw_page).do_login()
 
     return home_page  # все це pre-condition, після return не можу бути post-conditions
     pritn('Never printed')

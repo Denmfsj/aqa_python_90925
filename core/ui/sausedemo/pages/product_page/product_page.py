@@ -1,3 +1,4 @@
+from core.ui.sausedemo.forms.bucket_form import BucketForm
 from core.ui.sausedemo.pages.base_page import BasePage
 from utils.settings import d_settings
 from playwright.sync_api import expect
@@ -9,6 +10,7 @@ class ProductPage(BasePage):
         super().__init__(page)
         self.url = f'{self.base_url}inventory-item.html?id='
         self.page_id = page_id
+        self.bucket = BucketForm(page)
 
 
     def open_page(self):
@@ -24,3 +26,7 @@ class ProductPage(BasePage):
             return True
         except Exception:
             return False
+
+
+    def add_to_card(self):
+        self.page.locator('#add-to-cart').click()
