@@ -45,6 +45,6 @@ def test_bucket_has_1_products(brand_new_page):
     actual_result = brand_new_page.bucket.get_number_of_items_in_bucket()
     brand_new_page.page.wait_for_timeout(1000)
 
-    assert actual_result == 2, f'Must be 2 product in bucket but we have {actual_result}'
+    assert actual_result == 1, f'Must be 1 product in bucket but we have {actual_result}'
 
 
