@@ -1,0 +1,25 @@
+
+services:
+  db_srv:
+    image: postgres
+    environment:
+      POSTGRES_USER: test_user
+      POSTGRES_PASSWORD: test_password
+      POSTGRES_DB: test_db
+    ports:
+      - "5435:5432"
+
+  app:
+    build:
+      context: .
+      dockerfile: db_docker.dockerfile
+
+    depends_on:
+      - db_srv
+
+    environment:
+      POSTGRES_USER: test_user
+      POSTGRES_PASSWORD: test_password
+      POSTGRES_DB: test_db
+      POSTGRES_HOST: db_srv
+      POSTGRES_PORT: 5432
