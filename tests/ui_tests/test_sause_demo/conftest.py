@@ -1,6 +1,7 @@
 from pathlib import Path
 
 import pytest
+import allure
 
 from playwright.sync_api import sync_playwright, expect, Page
 
@@ -10,13 +11,18 @@ from core.ui.sausedemo.pages.product_page.product_page import ProductPage
 from definitions import BASE_PATH
 
 
+@pytest.mark.ui
+@allure.epic('UI SauceDemo tests')
+class UiSauceDemoBase:
+    pass
+
 @pytest.fixture(scope='session')  # 1 сторінка для всіх тестів
 def pw_page() -> Page:
 
     # pre-condition - перед yield  в yield page поверне сторінку
     # після yield post-condition
     with sync_playwright() as p:
-        browser = p.chromium.launch(headless=False)  # чи НЕ бачити вікно браузера
+        browser = p.chromium.launch(headless=True)  # чи НЕ бачити вікно браузера
 
         page = browser.new_page()
         yield page
@@ -43,6 +49,14 @@ def trace_per_test(request, pw_page):
     # stop tracing і збереження після тесту
     test_name = request.node.name
     context.tracing.stop(path=str(trace_path / f"{test_name}.zip"))
+
+    pw_page.screenshot(path=str(trace_path / f"{test_name}.png"), type='png')
+
+    allure.attach.file(str(trace_path / f"{test_name}.zip"),
+                       name='pw_trace', attachment_type=allure.attachment_type.ZIP)
+
+    allure.attach.file(str(trace_path / f"{test_name}.png"),
+                       name='screenshot', attachment_type=allure.attachment_type.PNG)
 
 @pytest.fixture(scope='session')
 def home_page(pw_page) -> HomePage:

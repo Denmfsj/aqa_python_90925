@@ -6,6 +6,7 @@ from core.ui.sausedemo.pages.login_page.login_page_locators import LoginPageLoca
 from utils.settings import d_settings
 
 import logging
+import allure
 
 
 class LoginPage(BasePage):
@@ -22,10 +23,12 @@ class LoginPage(BasePage):
         self.logger = logging.getLogger('LoginPage')
 
 
+    @allure.step('opening LoginPage')
     def open_page(self):
         self.page.goto(self.url, timeout=1000)
         return self
 
+    @allure.step('Do login with username = {user_name}')
     def do_login(self, user_name=d_settings.SAUSEDEMO_USERNAME,
                  user_pwd=d_settings.SAUSEDEMO_PASSWORD) -> HomePage:
 
@@ -34,10 +37,12 @@ class LoginPage(BasePage):
         return self.click_login_button()
 
 
+    @allure.step('click login button')
     def click_login_button(self) -> HomePage:
         self.page.locator(self.page_locators.login_button).click()
         return HomePage(self.page)
 
+    @allure.step('fill user pwd')
     def fill_user_pwd(self, pwd=d_settings.SAUSEDEMO_PASSWORD):
         self.fill_field(
             locator=self.page.locator(self.page_locators.user_pwd),
@@ -50,6 +55,7 @@ class LoginPage(BasePage):
         self.page.locator(self.error_button).click()
         return self
 
+    @allure.step('fill user name')
     def fill_user_name(self, name=d_settings.SAUSEDEMO_USERNAME):
         self.logger.info(f'Filling user name with name = {name}')
         self.page.locator(self.page_locators.user_name).fill(name)

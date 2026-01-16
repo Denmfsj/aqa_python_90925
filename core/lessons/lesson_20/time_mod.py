@@ -10,7 +10,7 @@ start_time = time.time()
 #
 # def test_check_history_buc():
 #     start_time =  time.time()
-#     # add_to_bucket()
+#     # add_to_basket()
 #     # checkout()
 #     # get_history_of_item()
 #     history_from_api = get_history_of_item()

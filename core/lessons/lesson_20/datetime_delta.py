@@ -25,7 +25,7 @@ print(some_time_dt - now_without_tz)
 
 # def test_check_history_buc():
 #
-#     # add_to_bucket()
+#     # add_to_basket()
 #     start_time = pytz.timezone(str(get_localzone())).localize(datetime.now()) # dt з таймзоною
 #     # checkout()
 #     # get_history_of_item()

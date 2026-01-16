@@ -1,4 +1,4 @@
-from core.ui.sausedemo.forms.bucket_form import BucketForm
+from core.ui.sausedemo.forms.basket_form import BasketForm
 from core.ui.sausedemo.pages.base_page import BasePage
 from utils.settings import d_settings
 from playwright.sync_api import expect
@@ -10,7 +10,7 @@ class ProductPage(BasePage):
         super().__init__(page)
         self.url = f'{self.base_url}inventory-item.html?id='
         self.page_id = page_id
-        self.bucket = BucketForm(page)
+        self.basket = BasketForm(page)
 
 
     def open_page(self):
