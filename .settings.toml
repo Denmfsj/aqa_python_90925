@@ -10,16 +10,19 @@ SAUSEDEMO_PASSWORD=''
 GOREST_API="http://gorest.co.in/public/v2/users"
 student_url='http://127.0.0.1:8080'
 SAUSEDEMO_URL = "https://www.saucedemo.com/"
+SECERT_PHRASE = 'dev_phase'
 
 
 [stage]
 GOREST_API="http://gorest.co.in/public/v2/users"
 student_url='http://127.0.0.1:8080'
 SAUSEDEMO_URL = "https://www.saucedemo.com/"
+SECERT_PHRASE = 'stage_phase'
 
 
 [prod]
 GOREST_API="http://gorest.co.in/public/v2/users"
 student_url="not implemented yet"
 SAUSEDEMO_URL = "https://www.saucedemo.com/"
+SECERT_PHRASE = 'prod_phase'
 
