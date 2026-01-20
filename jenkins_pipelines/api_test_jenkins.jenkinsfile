@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                git branch: 'main', url: 'https://github.com/Denmfsj/aqa_python_90925.git'
+            }
+        }
+        stage('Install dependencies') {
+            steps {
+                sh '''
+                    rm -rf allure-results
+                    apt-get update
+                    apt-get install -y python3 python3-dev
+                    apt install -y python3-pip
+                    apt install -y python3.13-venv
+                    python3 -m venv venv'''
+            }
+
+        }
+        stage('Install requirements') {
+            steps {
+                 sh '''#!/bin/bash
+                 source venv/bin/activate
+                        playwright install
+                        pip3 install -r requirements.txt'''
+            }
+        }
+        stage('Run tests') {
+            steps {
+                sh '''#!/bin/bash
+                source venv/bin/activate
+                pytest -m swapi --alluredir=allure-results'''
+            }
+        }
+    }
+    post {
+        always {
+            allure includeProperties: false, jdk: '', resultPolicy: 'LEAVE_AS_IS', results: [[path: 'allure-results']]
+        }
+    }
+}
