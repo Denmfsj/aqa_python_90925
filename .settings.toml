@@ -1,5 +1,7 @@
 [default]
 CURENT_VERSION=22.1
+STUDENT_URL=''
+SAUSEDEMO_USERNAME=''
 
 
 [dev]
