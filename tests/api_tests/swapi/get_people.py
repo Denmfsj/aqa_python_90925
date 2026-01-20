@@ -6,13 +6,14 @@ from assertpy import soft_assertions, assert_that
 
 people_url = 'https://swapi.dev/api/people'
 
+@pytest.mark.swapi
 def test_get_people_smoke():
 
     response = requests.get(people_url)
 
     assert response.status_code == 200, f"Status code for {people_url} must be 200"
 
-
+@pytest.mark.swapi
 @pytest.mark.parametrize('search_phrase', ['re', 'a', 'ololo'])
 def test_get_people_search(search_phrase):
 
@@ -29,7 +30,7 @@ def test_get_people_search(search_phrase):
             print(f'checking {person.get("name")}')
             assert_that(search_phrase).is_in(person.get('name'))
 
-
+@pytest.mark.swapi
 def test_get_people_base_people_data():
 
 
