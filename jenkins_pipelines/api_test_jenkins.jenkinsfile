@@ -31,7 +31,7 @@ pipeline {
             steps {
                 sh '''#!/bin/bash
                 source venv/bin/activate
-                pytest -m swapi --alluredir=allure-results'''
+                pytest -m "${PYTEST_MARK}" --alluredir=allure-results'''
             }
         }
     }
